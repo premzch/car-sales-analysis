@@ -17,4 +17,28 @@ The raw file had a bunch of typical real-world data problems:
 - Column names were inconsistent (mixed casing, spaces), so I standardized all of them to lowercase with underscores.
 - Text fields like customer name, company, model, engine, and color weren't consistently formatted, so I converted them to proper Title Case.
 - The engine column had weird corrupted characters (like stray `Â` symbols from an encoding issue) that I had to strip out.
-- Dates, annual income, and price were
+- Dates, annual income, and price were stored as text in places, so I converted everything to the correct numeric/datetime types.
+
+I used `pandas` and `numpy` for all of this, written and tested in VS Code.
+
+## The dashboard (Power BI)
+
+Once the data was clean, I built a dashboard to answer the kind of questions a sales manager would actually care about:
+
+- Total revenue, total units sold, and average selling price
+- Sales breakdown by body style, color, transmission, and engine type
+- Regional performance across dealers, mapped geographically
+
+## How to run it
+
+1. Clone the repo
+2. Put your raw file in the same folder and name it `Car Sales.csv`
+3. Run the cleaning script:
+```bash
+   python car_sales.py
+```
+4. Open `car_sales.pbix` in Power BI Desktop to view the dashboard
+
+## What I'd improve next
+
+If I revisit this, I'd probably automate the Power BI refresh to pull directly from the script output instead of manual reimport, and add a few more validation checks in the cleaning step.
