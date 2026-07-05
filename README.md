@@ -1,47 +1,20 @@
-# Car Sales Data Analysis & Visualization
+# Car Sales Data Analysis & Dashboard
 
-An end-to-end data analytics project focused on cleaning raw automotive sales data using Python and building an interactive dashboard in Power BI to track key performance indicators (KPIs).
+I built this project to practice going from a messy raw dataset all the way to a working business dashboard — basically the full pipeline you'd use in a real analyst role.
 
----
+The dataset is car sales records (customer info, dealer region, vehicle details, price, etc.). It came in pretty messy, so most of the actual work went into cleaning it up before I could do anything useful with it in Power BI.
 
-## 📊 Project Overview
-This project takes raw car sales records and transforms them into actionable business insights. The process is split into two distinct stages:
-1. **Data Cleaning & Preprocessing:** Standardizing data formats and treating anomalies using Python.
-2. **Data Visualization:** Designing a robust dashboard to track sales metrics, regional performance, and vehicle trends.
+## What's in this repo
 
----
+- `car_sales.py` — Python script that cleans the raw data
+- `Car_Sales_Cleaned.csv` — the cleaned output
+- `car_sales.pbix` — the Power BI dashboard built on top of the cleaned data
 
-## 🛠️ Tech Stack & Tools
-* **Python (VS Code):** Used for data cleaning, text formatting, and datatype corrections.
-  * *Libraries:* `pandas`, `numpy`
-* **Power BI Desktop:** Used for data modeling, DAX measures, and interactive reporting.
+## The cleaning process (Python)
 
----
+The raw file had a bunch of typical real-world data problems:
 
-## 🐍 Step 1: Data Cleaning (Python)
-The `car_sales.py` script executes the following preprocessing steps to ensure data integrity:
-* **Structural Cleaning:** Strips whitespace, converts column names to lowercase, and replaces spaces with underscores for uniform coding.
-* **Text Formatting:** Standardizes categorical text columns (like Customer Name, Company, Model, Engine, Transmission, and Color) into proper Title Case.
-* **Anomalies Fixed:** Cleans corrupt encoding symbols (e.g., removing `Â` characters from the `engine` details).
-* **Datatype Correction:** Explicitly converts dates, `annual_income`, and `price` into correct numeric/datetime formats for seamless analysis.
-
----
-
-## 📈 Step 2: Business Dashboard (Power BI)
-The `car_sales.pbix` file contains an interactive reporting layout built to analyze business health. 
-
-### Key Insights Tracked:
-* **Sales Overview:** Total Revenue, Total Cars Sold, and Average Selling Price.
-* **Performance Breakdown:** Sales tracking by vehicle body style, color, transmission type, and engine configuration.
-* **Geographical Distribution:** Sales performance mapped out across dealer regions.
-
----
-
-## 🚀 How to Run this Project
-
-### To run the Python Script:
-1. Clone this repository.
-2. Make sure you have your raw dataset named `Car Sales.csv` in the same directory.
-3. Run the script via VS Code or your terminal:
-   ```bash
-   python car_sales.py
+- Column names were inconsistent (mixed casing, spaces), so I standardized all of them to lowercase with underscores.
+- Text fields like customer name, company, model, engine, and color weren't consistently formatted, so I converted them to proper Title Case.
+- The engine column had weird corrupted characters (like stray `Â` symbols from an encoding issue) that I had to strip out.
+- Dates, annual income, and price were
